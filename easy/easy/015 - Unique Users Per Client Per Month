@@ -1,0 +1,11 @@
+SELECT 
+    client_id,
+    EXTRACT(MONTH FROM time_id) AS month,
+    COUNT(DISTINCT user_id) AS no_of_user
+FROM 
+    fact_events
+GROUP BY 
+    client_id,
+    EXTRACT(MONTH FROM time_id)
+ORDER BY 
+    client_id, month;

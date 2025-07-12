@@ -1,0 +1,4 @@
+select count(distinct customer_id) as no_of_cust,
+avg(amount) as avg_amt
+from 
+postmates_orders;

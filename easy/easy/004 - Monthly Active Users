@@ -1,0 +1,6 @@
+select 
+account_id, 
+COUNT(DISTINCT user_id) AS n_of_acc
+from sf_events
+where record_date between '2021-01-01' and '2021-01-31'
+group by account_id

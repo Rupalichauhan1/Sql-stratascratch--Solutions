@@ -1,0 +1,10 @@
+select project_id, 
+avg(score) avg_score,
+count(team_member_id)
+    from 
+project_data
+    group by 
+project_id
+having count(team_member_id) >1
+    order by 
+project_id;

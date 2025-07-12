@@ -1,0 +1,9 @@
+select COUNT(DISTINCT u.user_id) AS no_of_user
+from 
+rc_calls c
+Join 
+rc_users u
+on c.user_id = u.user_id
+where u.status = 'free'
+  AND EXTRACT(YEAR FROM c.call_date) = 2020
+  AND EXTRACT(MONTH FROM c.call_date) = 4;

@@ -1,0 +1,8 @@
+select u.user_id,
+COALESCE(count(a.activity_type),0 )as activity_type_ount
+  from 
+user_profiles u
+  Left join activity_log a
+on u.user_id = a.user_id
+  group by 
+u.user_id

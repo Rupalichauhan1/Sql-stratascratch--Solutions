@@ -1,0 +1,10 @@
+select 
+    service_name, 
+    status_of_order,
+    sum(number_of_orders) as n_o_orders
+from uber_orders
+group by 
+     service_name, 
+     status_of_order
+order by  
+     n_o_orders desc

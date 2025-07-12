@@ -1,0 +1,10 @@
+WITH ranked_shipments AS 
+(
+ SELECT shipment_id,
+ weight,
+ ROW_NUMBER() OVER (PARTITION BY shipment_id ORDER BY shipment_date) AS rn
+    FROM amazon_shipment
+)
+SELECT shipment_id, weight
+FROM ranked_shipments
+WHERE rn = 1;

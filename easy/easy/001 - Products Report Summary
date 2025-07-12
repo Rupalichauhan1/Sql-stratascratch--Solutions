@@ -1,0 +1,10 @@
+SELECT
+    p.product_category,
+    COUNT(DISTINCT t.transaction_id)  AS n_of_trans,
+    SUM(t.sales)                      AS total_sales
+FROM wfm_transactions  t
+JOIN wfm_products      p  ON t.product_id = p.product_id
+WHERE EXTRACT(YEAR FROM t.transaction_date) = 2017
+GROUP BY p.product_category
+HAVING SUM(t.sales) > 0                        -- exclude zero-sales categories
+ORDER BY total_sales DESC;                     -- sort by total sales

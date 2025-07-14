@@ -9,3 +9,23 @@ GROUP BY
     EXTRACT(MONTH FROM time_id)
 ORDER BY 
     client_id, month;
+
+
+---
+
+
+
+
+-- Step 1: Select all unique customers who made purchases
+SELECT DISTINCT p.customer_id
+FROM purchases p
+
+-- Step 2: Exclude those who have made any returns
+WHERE p.customer_id NOT IN (
+    SELECT DISTINCT r.customer_id
+    FROM returns r
+);
+
+
+
+
